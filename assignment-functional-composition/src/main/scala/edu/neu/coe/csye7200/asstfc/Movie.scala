@@ -1,7 +1,5 @@
 package edu.neu.coe.csye7200.asstfc
 
-import edu.neu.coe.csye7200.asstfc.Movie.MoviesProtocol.movieJsonFormat
-
 import scala.collection.mutable
 import scala.io.{Codec, Source}
 import scala.util._
@@ -108,7 +106,7 @@ object Movie extends App {
     implicit val nameFormat: RootJsonFormat[Name] = jsonFormat4(Name.apply)
     implicit val movieJsonFormat: RootJsonFormat[Movie] = jsonFormat11(Movie.apply)
     implicit val ratingFormat: RootJsonFormat[Rating] = jsonFormat2(Rating.apply)
-    implicit val reviewJsonFormat: RootJsonFormat[Reviews] = jsonFormat7(Reviews.apply)
+    implicit val reviewFormat: RootJsonFormat[Reviews] = jsonFormat7(Reviews.apply)
     implicit val productionFormat: RootJsonFormat[Production] = jsonFormat4(Production.apply)
     implicit val principalFormat: RootJsonFormat[Principal] = jsonFormat2(Principal.apply)
   }
@@ -131,10 +129,11 @@ object Movie extends App {
   def testSerializationAndDeserialization(ms: Seq[Movie]): Boolean = {
     // 5 points
     // TO BE IMPLEMENTED
+    import MoviesProtocol._
     for (m <- ms) {
       val json = m.toJson
-      val movies = json.convertTo[Movie]
-      if (!m.equals(movies)) false
+      val movie = json.convertTo[Movie]
+      if (!m.equals(movie)) false
     }
     true
   }
