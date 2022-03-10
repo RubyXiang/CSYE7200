@@ -104,11 +104,11 @@ object Movie extends App {
     // TO BE IMPLEMENTED
     implicit val formatFormat: RootJsonFormat[Format] = jsonFormat4(Format.apply)
     implicit val nameFormat: RootJsonFormat[Name] = jsonFormat4(Name.apply)
-    implicit val movieJsonFormat: RootJsonFormat[Movie] = jsonFormat11(Movie.apply)
     implicit val ratingFormat: RootJsonFormat[Rating] = jsonFormat2(Rating.apply)
     implicit val reviewFormat: RootJsonFormat[Reviews] = jsonFormat7(Reviews.apply)
     implicit val productionFormat: RootJsonFormat[Production] = jsonFormat4(Production.apply)
     implicit val principalFormat: RootJsonFormat[Principal] = jsonFormat2(Principal.apply)
+    implicit val movieJsonFormat: RootJsonFormat[Movie] = jsonFormat11(Movie.apply)
   }
 
   implicit object IngestibleMovie extends IngestibleMovie
