@@ -132,8 +132,8 @@ object Movie extends App {
     import MoviesProtocol._
     for (m <- ms) {
       val json = m.toJson
-      val movie = json.convertTo[Movie]
-      if (!m.equals(movie)) false
+      val movies = json.convertTo[Movie]
+      if (!m.equals(movies)) false
     }
     true
   }
